@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}View Tickets{% endblock %}
+
+{% block content %}
+<h2>Support Tickets</h2>
+{% for ticket in tickets %}
+<div class="card mb-3 shadow-sm">
+    <div class="card-header">
+        <strong>{{ ticket.subject }}</strong>
+        <span class="text-muted float-end">{{ ticket.created_at }}</span>
+    </div>
+    <div class="card-body">
+        <p><strong>From:</strong> {{ ticket.name }} ({{ ticket.email }})</p>
+        <!-- VULNERABILITY: No escaping on message -> stored XSS -->
+        <p>{{ ticket.message | safe }}</p>
+    </div>
+</div>
+{% else %}
+<p>No tickets yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="alert alert-warning">
+    <strong>Lab Note:</strong> This application contains intentional vulnerabilities for educational purposes.
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">View Tickets</h5>
+                <p class="card-text">Check support tickets (watch out for XSS).</p>
+                <a href="{{ url_for('admin_tickets') }}" class="btn btn-light">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">File Manager</h5>
+                <p class="card-text">Upload and manage files. No restrictions!</p>
+                <a href="{{ url_for('admin_upload') }}" class="btn btn-light">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

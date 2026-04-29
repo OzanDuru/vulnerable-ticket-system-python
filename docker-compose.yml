@@ -1,0 +1,15 @@
+services:
+  vulnerable-ticket-system:
+    build: .
+    container_name: vulnerable-ticket-system
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE=/app/data/tickets.db
+      - PORT=5000
+      - FLASK_DEBUG=1
+      - SECRET_KEY=supersecretkey
+    volumes:
+      - ./uploads:/app/uploads
+      - ./data:/app/data
+    restart: unless-stopped
